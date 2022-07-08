@@ -40,7 +40,7 @@ tracks/1/keys = {
 [node name="Dao" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 attribute = ExtResource( 3 )
-hurtAreaActive = true
+is_player = true
 
 [node name="Sprite" parent="Pivot" index="0"]
 position = Vector2( 16, 0 )

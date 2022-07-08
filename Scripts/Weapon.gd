@@ -5,6 +5,7 @@ onready var anim = $"AnimationPlayer"
 onready var rng = RandomNumberGenerator.new()
 
 export (Resource) var attribute
+export (bool) var is_player
 var active:bool = true
 var hurtAreaActive:bool = false
 var effects:Array = []
@@ -14,10 +15,11 @@ func _ready():
 	rng.randomize()
 
 func _process(delta):
-	look_at(get_global_mouse_position())
-	
-	if active && Input.is_action_just_pressed("Attack"):
-		anim.play("base_attack")
+	if(is_player):
+		look_at(get_global_mouse_position())
+		
+		if active && Input.is_action_just_pressed("Attack"):
+			anim.play("base_attack")
 
 func add_effects(n:PackedScene, c:Dictionary):
 	effects.append({"PackedScene": n, "Config": c})

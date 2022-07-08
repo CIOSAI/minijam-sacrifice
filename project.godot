@@ -14,10 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Effect.gd"
 }, {
+"base": "Entity",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/Enemy.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Entity",
 "language": "GDScript",
 "path": "res://Scripts/Entity.gd"
+}, {
+"base": "Entity",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/Player.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
@@ -28,12 +38,20 @@ _global_script_classes=[ {
 "class": "WeaponAttribute",
 "language": "GDScript",
 "path": "res://Scripts/Weapon_Attribute.gd"
+}, {
+"base": "Area2D",
+"class": "Wisp",
+"language": "GDScript",
+"path": "res://Scripts/Wisp.gd"
 } ]
 _global_script_class_icons={
 "Effect": "",
+"Enemy": "",
 "Entity": "",
+"Player": "",
 "Weapon": "",
-"WeaponAttribute": ""
+"WeaponAttribute": "",
+"Wisp": ""
 }
 
 [application]
@@ -75,6 +93,7 @@ Attack={
 
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
 
 [physics]
 

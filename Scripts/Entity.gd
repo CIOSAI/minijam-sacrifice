@@ -1,7 +1,8 @@
 extends KinematicBody2D
 class_name Entity
 
-var hp:int = 4
+var max_hp:float = 4.0
+var hp:float = 4.0
 
 func death():
 	print("death() not implemented")
@@ -20,6 +21,9 @@ func hurt(dmg:float, effects:Array=[]):
 	
 	if dmg!=0:
 		hp-=dmg
+		hp = min(max_hp, hp)
+	
+	print(name + " has been hit, hp at " + str(hp) )
 	
 	if hp<=0:
 		death()
