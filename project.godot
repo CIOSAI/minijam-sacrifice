@@ -8,10 +8,32 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Effect",
+"language": "GDScript",
+"path": "res://Scripts/Effect.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Scripts/Weapon.gd"
+}, {
+"base": "Resource",
+"class": "WeaponAttribute",
+"language": "GDScript",
+"path": "res://Scripts/Weapon_Attribute.gd"
+} ]
+_global_script_class_icons={
+"Effect": "",
+"Weapon": "",
+"WeaponAttribute": ""
+}
+
 [application]
 
 config/name="Minijam-sacrifice"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
 
 [input]

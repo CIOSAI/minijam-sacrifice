@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://player_sheet.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -25,7 +25,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 12, 12 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ 18, 19, 19 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.3
 loop = true
 step = 0.15
@@ -56,7 +56,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 17 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 step = 0.2
@@ -73,7 +73,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 1 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -89,7 +89,7 @@ tracks/0/keys = {
 "values": [ 12, 12 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 step = 0.05
@@ -132,11 +132,11 @@ shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/death = SubResource( 5 )
-anims/fall = SubResource( 6 )
-anims/idle = SubResource( 7 )
-anims/jump = SubResource( 8 )
-anims/walk = SubResource( 9 )
+anims/death = SubResource( 4 )
+anims/fall = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/walk = SubResource( 8 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
