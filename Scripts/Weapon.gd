@@ -27,7 +27,7 @@ func crit() -> bool:
 
 func _on_HurtArea_body_entered(body):
 	if !hurtAreaActive: return
-	if body is Enemy:
+	if body is Entity:
 		body.hurt(
 			attribute.base_dmg*(attribute.crit_scale if crit() else 1),
 			effects)

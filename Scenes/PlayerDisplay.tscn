@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/tile_0087.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/PlayerDisplay.gd" type="Script" id=2]
+
+[node name="PlayerDisplay" type="Sprite"]
+scale = Vector2( 1.87658, 1.87658 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )

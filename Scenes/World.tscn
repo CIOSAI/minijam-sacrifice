@@ -40,4 +40,4 @@ position = Vector2( -154.211, -54.3269 )
 shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 13.7845, 71.8268 )
+position = Vector2( 3.62155, 108.783 )
