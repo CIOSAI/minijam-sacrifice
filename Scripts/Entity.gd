@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Entity
 
+onready var hurt_anim = $"HurtAnimation"
+
 var max_hp:float = 4.0
 var hp:float = 4.0
 
@@ -21,7 +23,11 @@ func hurt(dmg:float, effects:Array=[]):
 	
 	if dmg!=0:
 		hp-=dmg
-		hp = min(max_hp, hp)
+		if dmg>0:
+			hurt_anim.play("hurt")
+			Global.camera.screen_shake(dmg)
+		else:
+			hp = min(max_hp, hp)
 	
 	print(name + " has been hit, hp at " + str(hp) )
 	

@@ -2,7 +2,7 @@ extends Effect
 
 #currently Applier applies 10 every second, 
 #maybe different for every effect, maybe not
-export var apply_rate = 10.0
+export var apply_rate = 3.0
 
 #these variables will be moved to mother class if most of effects need them
 #or even scenes on their own if they get too complicated

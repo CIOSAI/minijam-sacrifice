@@ -19,10 +19,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, true, false ]
+"values": [ true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Pivot:rotation_degrees")
@@ -42,9 +42,12 @@ script = ExtResource( 2 )
 attribute = ExtResource( 3 )
 is_player = true
 
+[node name="Pivot" parent="." index="0"]
+rotation = -1.5708
+
 [node name="Sprite" parent="Pivot" index="0"]
 position = Vector2( 48, 0 )
-rotation = 1.57079
+rotation = 1.5708
 scale = Vector2( 6.93929, 6.93929 )
 texture = ExtResource( 4 )
 
