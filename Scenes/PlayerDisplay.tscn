@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Sprites/tile_0087.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/industrial.v2 (1).png" type="Texture" id=1]
 [ext_resource path="res://Scripts/PlayerDisplay.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/circle.png" type="Texture" id=3]
 
@@ -31,22 +31,23 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="PlayerDisplay" type="Sprite"]
-texture = ExtResource( 1 )
 offset = Vector2( 0, -8 )
 script = ExtResource( 2 )
 walk_wobble_freq = 24.0
 walk_wobble_amp = 0.1
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1.87658, 1.87658 )
+scale = Vector2( 4.41967, 4.41967 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -8 )
+hframes = 32
+vframes = 32
+frame = 513
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Dust" type="Particles2D" parent="."]
-scale = Vector2( 3, 3 )
 z_index = -1
 speed_scale = 2.0
 local_coords = false
