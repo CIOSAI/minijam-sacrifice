@@ -21,4 +21,8 @@ scale = Vector2( 0.175601, 0.175601 )
 [node name="BatWeapon" parent="." index="2" instance=ExtResource( 4 )]
 scale = Vector2( 1.29965, 1.29965 )
 
+[node name="HealthBarPivot" parent="." index="5"]
+visible = false
+z_index = 0
+
 [connection signal="hit" from="BatWeapon" to="." method="_on_BatWeapon_hit"]

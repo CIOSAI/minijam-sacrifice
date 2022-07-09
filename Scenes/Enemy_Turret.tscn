@@ -8,13 +8,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22.3238, 26.7899 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 7.54412, 0, 0, Vector2( 0.166667, 1 ), -0.914027, -0.914027, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=4]
 flag_disable_z = true
 spread = 16.0
 gravity = Vector3( 0, 0, 0 )
@@ -23,10 +23,9 @@ initial_velocity_random = 0.47
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.4
-scale_curve = SubResource( 5 )
+scale_curve = SubResource( 3 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "default"
+[sub_resource type="Animation" id=5]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -91,11 +90,14 @@ amount = 16
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.95
-process_material = SubResource( 3 )
+process_material = SubResource( 4 )
 texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="." index="3"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "default"
-anims/default = SubResource( 2 )
+anims/default = SubResource( 5 )
+
+[node name="HealthBarPivot" parent="." index="7"]
+position = Vector2( 0, -32 )

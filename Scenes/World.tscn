@@ -26,6 +26,12 @@ shape = SubResource( 1 )
 [node name="Enemy_Turret" parent="." instance=ExtResource( 2 )]
 position = Vector2( -240.297, 38.1945 )
 
+[node name="Enemy_Turret2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -240.297, -29.2173 )
+
+[node name="Enemy_Turret3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -166.297, -103.514 )
+
 [node name="Enemy_Slime" parent="." instance=ExtResource( 5 )]
 position = Vector2( 69.4156, 16.9813 )
 target = Vector2( 3, 0 )

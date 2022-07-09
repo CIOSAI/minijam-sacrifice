@@ -38,6 +38,6 @@ func _process(delta):
 	tw.start()
 	scale.x = bouncy
 	
-	dust.emitting = abs(get_vel_x())>0.6
+	dust.emitting = abs(get_vel_x())>0.2
 	
 	t+=delta

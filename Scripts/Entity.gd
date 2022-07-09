@@ -2,9 +2,13 @@ extends KinematicBody2D
 class_name Entity
 
 onready var hurt_anim = $"HurtAnimation"
+onready var hp_bar = $"HealthBarPivot/HealthBar"
 
 var max_hp:float = 4.0
 var hp:float = 4.0
+
+func _ready():
+	hp_bar.set_health(1)
 
 func death():
 	print("death() not implemented")
@@ -28,8 +32,9 @@ func hurt(dmg:float, effects:Array=[]):
 			Global.camera.screen_shake(dmg)
 		else:
 			hp = min(max_hp, hp)
+		hp_bar.set_health(hp/max_hp)
 	
-	print(name + " has been hit, hp at " + str(hp) )
+#	print(name + " has been hit, hp at " + str(hp) )
 	
 	if hp<=0:
 		death()
