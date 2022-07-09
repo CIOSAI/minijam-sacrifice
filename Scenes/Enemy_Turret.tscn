@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Enemy_Turret.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/industrial.v2 (1).png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/circle.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.3238, 26.7899 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 7.54412, 0, 0, Vector2( 0.166667, 1 ), -0.914027, -0.914027, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 16.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 157.15
+initial_velocity_random = 0.47
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.4
+scale_curve = SubResource( 5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Aim:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.921569, 0.854902, 0.431373, 0 ), Color( 0.921569, 0.854902, 0.431373, 0 ), Color( 0.921569, 0.854902, 0.431373, 1 ), Color( 0.921569, 0.854902, 0.431373, 0 ), Color( 0.921569, 0.854902, 0.431373, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Particles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Enemy_Turret" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="Aim" type="Line2D" parent="." index="1"]
+points = PoolVector2Array( 0, 0, 64, 0 )
+default_color = Color( 0.921569, 0.854902, 0.431373, 0 )
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+scale = Vector2( 3.24749, 3.24749 )
+texture = ExtResource( 3 )
+hframes = 32
+vframes = 32
+frame = 704
+
+[node name="Particles2D" type="Particles2D" parent="Sprite" index="0"]
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.95
+process_material = SubResource( 3 )
+texture = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="." index="3"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "default"
+anims/default = SubResource( 2 )

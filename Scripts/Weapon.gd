@@ -10,6 +10,8 @@ var active:bool = true
 var hurtAreaActive:bool = false
 var effects:Array = []
 
+signal hit
+
 func _ready():
 	assert(attribute is WeaponAttribute, "attribute is not a WeaponAttribute")
 	rng.randomize()
@@ -30,6 +32,7 @@ func crit() -> bool:
 func _on_HurtArea_body_entered(body):
 	if !hurtAreaActive: return
 	if body is Entity:
+		emit_signal("hit")
 		body.hurt(
 			attribute.base_dmg*(attribute.crit_scale if crit() else 1),
 			effects)
