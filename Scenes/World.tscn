@@ -1,49 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Enemy_Bat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/MainMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 203.203, 5.68212 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.49663, 193.418 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 23.8473, 6.34954 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -1.0947, 62.364 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 210.184, -135.269 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -199.212, -129.328 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 181.992, -7.0495 )
-shape = SubResource( 3 )
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 3.948, -61.8254 )
-shape = SubResource( 3 )
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -156.211, -110.327 )
-shape = SubResource( 3 )
+[node name="MainMap" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -0.37845, 26.783 )
-
-[node name="Enemy_Bat" parent="." instance=ExtResource( 2 )]
-position = Vector2( 7.7916, -92.4799 )
