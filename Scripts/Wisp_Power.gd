@@ -3,4 +3,5 @@ extends Wisp
 func effect(ratio:float):
 	for i in all_bodies:
 		if i is Player:
-			i.hurt(-0.25*ratio)
+			var weapon:Weapon = i.get_node("Dao")
+			while(!weapon.roll_crit()): 0

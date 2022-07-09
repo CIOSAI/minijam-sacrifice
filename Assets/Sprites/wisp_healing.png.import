@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile_0108.png-5a88b47e31b126cef503552e8f052e38.stex"
+path="res://.import/wisp_healing.png-51d4aa865d56e66a0113c62903db490b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/tile_0108.png"
-dest_files=[ "res://.import/tile_0108.png-5a88b47e31b126cef503552e8f052e38.stex" ]
+source_file="res://Assets/Sprites/wisp_healing.png"
+dest_files=[ "res://.import/wisp_healing.png-51d4aa865d56e66a0113c62903db490b.stex" ]
 
 [params]
 

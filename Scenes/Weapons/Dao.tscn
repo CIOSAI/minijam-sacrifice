@@ -1,9 +1,31 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Weapons/Dao.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Weapons/Bat_Attribute.tres" type="Resource" id=3]
-[ext_resource path="res://Assets/Sprites/tile_0104.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/sword_sprite.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/prog_outline.png" type="Texture" id=5]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 12.2649, 0, 0, Vector2( 0.179916, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 84.25
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 97.74
+initial_velocity_random = 1.0
+angular_velocity = 720.0
+angular_velocity_random = 0.47
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+scale_curve = SubResource( 5 )
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 25.5001
@@ -36,22 +58,41 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 90.0, 0.0, -90.0, 0.0 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_crit"
+} ]
+}
 
 [node name="Dao" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 attribute = ExtResource( 3 )
 is_player = true
 
-[node name="Pivot" parent="." index="0"]
-rotation = -1.5708
-
 [node name="Sprite" parent="Pivot" index="0"]
-position = Vector2( 48, 0 )
-rotation = 1.5708
-scale = Vector2( 6.93929, 6.93929 )
+position = Vector2( 64, 0 )
+rotation = -2.35619
+scale = Vector2( 11.8944, 11.8944 )
 texture = ExtResource( 4 )
 
-[node name="HurtArea" parent="Pivot" index="1"]
+[node name="CritParticle" type="Particles2D" parent="Pivot" index="1"]
+position = Vector2( 128, 0 )
+emitting = false
+speed_scale = 1.5
+local_coords = false
+process_material = SubResource( 3 )
+texture = ExtResource( 5 )
+
+[node name="HurtArea" parent="Pivot" index="2"]
 collision_layer = 0
 collision_mask = 4
 
@@ -61,4 +102,7 @@ rotation = -1.5708
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="1"]
+playback_speed = 0.5
 anims/base_attack = SubResource( 2 )
+
+[connection signal="crit" from="." to="." method="_on_Dao_crit"]

@@ -1,6 +1,4 @@
 extends Weapon
 
-#onready var bleed_effect = preload("res://Scenes/Effects/Effect_Bleed.tscn")
-
-func _ready():
-	active = true
+func _on_Dao_crit(trig:bool):
+	$"Pivot/CritParticle".emitting = trig
