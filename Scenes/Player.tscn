@@ -19,6 +19,7 @@ shape = SubResource( 1 )
 [node name="Dao" parent="." index="1" instance=ExtResource( 5 )]
 
 [node name="PlayerDisplay" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 0, 15.5175 )
 
 [node name="PlayerMovement" parent="." index="3" instance=ExtResource( 2 )]
 body_path = NodePath("..")

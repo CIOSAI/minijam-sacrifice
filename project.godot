@@ -67,6 +67,7 @@ Global="*res://Scripts/Global.gd"
 [display]
 
 window/size/width=800
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Wisp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/tile_0114.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Wisp_Poison.gd" type="Script" id=3]
+
+[node name="Wisp_Poison" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
