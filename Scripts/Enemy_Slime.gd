@@ -17,8 +17,9 @@ func _ready():
 	init_pos = global_position
 	follow = init_pos
 	
-	target *= 64
-	speed *= 64
+	target *= Global.tm.cell_size.x
+	target -= init_pos
+	speed *= Global.tm.cell_size.x
 	
 	tween_move()
 

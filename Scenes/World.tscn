@@ -117,32 +117,30 @@ anims/poison = SubResource( 2 )
 anims/power = SubResource( 3 )
 
 [node name="Enemy_Turret" parent="." instance=ExtResource( 2 )]
-position = Vector2( 45.4156, 117.491 )
+position = Vector2( 22.422, 151.572 )
 
 [node name="Enemy_Turret2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 45.4156, 50.0794 )
-
-[node name="Enemy_Turret3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 120.416, 42.0794 )
+position = Vector2( 263.067, 151.572 )
 
 [node name="Enemy_Slime" parent="." instance=ExtResource( 5 )]
-position = Vector2( 297.208, 141.59 )
-target = Vector2( 3, 0 )
+position = Vector2( 137.416, 125.59 )
+target = Vector2( 20, 8 )
+speed = 4.0
 
 [node name="FlameTrap" parent="." instance=ExtResource( 11 )]
-position = Vector2( 365, 194 )
+position = Vector2( 24.8599, 195.324 )
 
 [node name="FlameTrap2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 396.113, 194 )
+position = Vector2( 52.7104, 195.324 )
 
 [node name="FlameTrap3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 429.749, 194 )
+position = Vector2( 81.6204, 196.914 )
 
 [node name="FlameTrap4" parent="." instance=ExtResource( 11 )]
-position = Vector2( 462.544, 194 )
+position = Vector2( 110.95, 194 )
 
 [node name="FlameTrap5" parent="." instance=ExtResource( 11 )]
-position = Vector2( 493.657, 194 )
+position = Vector2( 137.657, 195.5 )
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 

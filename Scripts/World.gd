@@ -11,7 +11,6 @@ onready var anim = $"AnimationPlayer"
 var current_death_type = POISON
 
 func _ready():
-	Global.tm = $"MainMap"
 	for i in Global.all_wisp:
 		spawn_wisp(i["type"], i["pos"])
 
