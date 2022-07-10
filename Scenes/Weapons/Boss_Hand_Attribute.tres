@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-base_dmg = 32.0
+base_dmg = 3.5
 crit_scale = 1.0
 crit_chance = 0.1

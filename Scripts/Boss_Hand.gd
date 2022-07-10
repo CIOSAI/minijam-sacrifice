@@ -7,5 +7,5 @@ func _ready():
 	target = global_position
 
 func _physics_process(delta):
-	vel = (target-global_position)*4.0
+	vel = (target-global_position)*100.0
 	move_and_slide(vel)

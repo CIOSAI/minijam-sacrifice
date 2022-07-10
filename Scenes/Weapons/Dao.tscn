@@ -137,7 +137,7 @@ rotation = -1.5708
 shape = SubResource( 9 )
 
 [node name="AnimationPlayer" parent="." index="1"]
-playback_speed = 0.5
+playback_speed = 0.75
 anims/base_attack = SubResource( 10 )
 
 [connection signal="crit" from="." to="." method="_on_Dao_crit"]

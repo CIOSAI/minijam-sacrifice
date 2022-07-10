@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemy_Turret.tscn" type="PackedScene" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Scenes/Weapons/Dao.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scripts/EventPlayer.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/Boss_Hand.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Boss_Head.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/BossAnimation.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/Thanks.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "healing"
@@ -122,6 +125,76 @@ tracks/0/keys = {
 "method": "play"
 } ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BossFightTrigger/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Ending"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("BossAnimation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "stop"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Boss_Head")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Overlay/Thankyou:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("EventPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "pause"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "WeaponObtained"
@@ -202,8 +275,37 @@ tracks/4/keys = {
 resource_name = "intro"
 length = 0.7
 
-[sub_resource type="Animation" id=11]
-resource_name = "Start"
+[sub_resource type="Animation" id=15]
+resource_name = "Flame"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("FlameRack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.1, 1.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -48 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Boss_Head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "LeftSlap"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Boss_Hand:target")
 tracks/0/interp = 1
@@ -211,26 +313,49 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.8, 0.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1608, -344 ), Vector2( 1608, -50 ), Vector2( 1608, -344 ) ]
+"values": [ Vector2( 1608, -344 ), Vector2( 1574, -360 ), Vector2( 1574, -360 ), Vector2( 1700, -160 ), Vector2( 1608, -344 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=12]
-animation = "Start"
+[sub_resource type="Animation" id=14]
+resource_name = "RightSlap"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss_Hand2:target")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.8, 0.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1992, -344 ), Vector2( 2240, -360 ), Vector2( 2240, -360 ), Vector2( 1900, -160 ), Vector2( 1992, -344 ) ]
+}
 
-[sub_resource type="AnimationNodeStateMachine" id=9]
-states/Start/node = SubResource( 12 )
-states/Start/position = Vector2( 113, 69 )
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="Animation" id=11]
+resource_name = "Start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss_Hand:target")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1608, -344 ), Vector2( 1608, -160 ), Vector2( 1608, -344 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 8 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 56, 72 )
+extents = Vector2( 80, 64 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -251,18 +376,17 @@ anims/power = SubResource( 3 )
 pause_mode = 2
 autoplay = "intro"
 anims/BossFightStart = SubResource( 8 )
+anims/Ending = SubResource( 16 )
 anims/WeaponObtained = SubResource( 6 )
 anims/intro = SubResource( 4 )
 script = ExtResource( 13 )
 
 [node name="BossAnimation" type="AnimationPlayer" parent="."]
+anims/Flame = SubResource( 15 )
+anims/LeftSlap = SubResource( 13 )
+anims/RightSlap = SubResource( 14 )
 anims/Start = SubResource( 11 )
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 9 )
-anim_player = NodePath("../BossAnimation")
-active = true
-parameters/playback = SubResource( 10 )
+script = ExtResource( 16 )
 
 [node name="Enemy_Turret" parent="." instance=ExtResource( 2 )]
 position = Vector2( 536, 8 )
@@ -364,31 +488,53 @@ position = Vector2( 288, 8 )
 shape = SubResource( 5 )
 
 [node name="BossFightTrigger" type="Area2D" parent="."]
-visible = false
 position = Vector2( 1664, 0 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossFightTrigger"]
-position = Vector2( 8, -232 )
+position = Vector2( -56, -224 )
 shape = SubResource( 7 )
-
-[node name="Overlay" type="CanvasLayer" parent="."]
-
-[node name="DeathScreen" parent="Overlay" instance=ExtResource( 6 )]
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="PauseScreen" parent="Overlay" instance=ExtResource( 10 )]
-visible = false
 
 [node name="Boss_Hand" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1608, -344 )
 
 [node name="Boss_Hand2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1992, -344 )
-scale = Vector2( -1, 1 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Boss_Head" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1792, -312 )
+rotation = 6.28319
+
+[node name="FlameRack" type="Node2D" parent="."]
+
+[node name="FlameTrap11" parent="FlameRack" instance=ExtResource( 11 )]
+position = Vector2( 1776, -128 )
+
+[node name="FlameTrap12" parent="FlameRack" instance=ExtResource( 11 )]
+position = Vector2( 1808, -128 )
+
+[node name="FlameTrap13" parent="FlameRack" instance=ExtResource( 11 )]
+position = Vector2( 1840, -128 )
+
+[node name="FlameTrap14" parent="FlameRack" instance=ExtResource( 11 )]
+position = Vector2( 1744, -128 )
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="DeathScreen" parent="Overlay" instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Thankyou" parent="Overlay" instance=ExtResource( 17 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="PauseScreen" parent="Overlay" instance=ExtResource( 10 )]
+visible = false
 
 [connection signal="give_player_weapon" from="EventPlayer" to="." method="_on_EventPlayer_give_player_weapon"]
+[connection signal="animation_finished" from="BossAnimation" to="BossAnimation" method="_on_BossAnimation_animation_finished"]
 [connection signal="body_entered" from="FlameTrap" to="FlameTrap" method="_on_Wisp_body_entered"]
 [connection signal="body_exited" from="FlameTrap" to="FlameTrap" method="_on_Wisp_body_exited"]
 [connection signal="body_entered" from="FlameTrap2" to="FlameTrap2" method="_on_Wisp_body_entered"]
@@ -411,3 +557,4 @@ scale = Vector2( -1, 1 )
 [connection signal="body_exited" from="FlameTrap10" to="FlameTrap10" method="_on_Wisp_body_exited"]
 [connection signal="body_entered" from="DaoObtainedTrigger" to="EventPlayer" method="_on_DaoObtainedTrigger_body_entered"]
 [connection signal="body_entered" from="BossFightTrigger" to="EventPlayer" method="_on_BossFightTrigger_body_entered"]
+[connection signal="boss_killed" from="Boss_Head" to="EventPlayer" method="_on_Boss_Head_boss_killed"]

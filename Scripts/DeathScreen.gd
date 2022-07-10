@@ -25,5 +25,6 @@ func _setup(tex:Texture, type:int):
 	$"Label".text = get_string(type)
 
 func _on_Retry_pressed():
+	print("this is death")
 	get_tree().paused = false
 	get_tree().reload_current_scene()
