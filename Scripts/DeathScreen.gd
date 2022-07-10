@@ -6,7 +6,7 @@ func array_rand(a:Array):
 func get_string(type:int)->String:
 	var output = ""
 	output += [
-		"Healing", 
+		"Revenge will be done\neven when I lose my blade\n", 
 		"My soul\nwill fight on\nin the form of a wisp\n", 
 		"I turn myself\ninto a spirit of assistant\n"
 		][type]

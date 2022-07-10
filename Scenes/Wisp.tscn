@@ -34,6 +34,7 @@ shape = SubResource( 1 )
 autostart = true
 
 [node name="Particles2D" type="Particles2D" parent="."]
+z_index = -5
 amount = 24
 visibility_rect = Rect2( -200, -200, 400, 400 )
 process_material = SubResource( 4 )
