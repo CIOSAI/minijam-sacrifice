@@ -37,7 +37,6 @@ walk_wobble_freq = 24.0
 walk_wobble_amp = 0.1
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 4.41967, 4.41967 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -8 )
 hframes = 32
