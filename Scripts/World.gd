@@ -38,7 +38,7 @@ func move_camera_back(dur:float):
 	Global.camera.move_to(Global.camera.global_position, Vector2.ONE, dur)
 
 func move_camera(v:Vector2, sc:Vector2, dur:float):
-	print(Global.camera)
+	print(Global.camera.has_method("move_to"))
 	Global.camera.move_to(v, sc, dur)
 
 func frame_freeze(sc:float, dur:float):
