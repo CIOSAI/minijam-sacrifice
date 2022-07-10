@@ -7,23 +7,23 @@
 [ext_resource path="res://Scenes/PlayerCamera.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.5, 5.5 )
+extents = Vector2( 3.47117, 6.75998 )
 
 [node name="Player" instance=ExtResource( 1 )]
 collision_layer = 2
 script = ExtResource( 4 )
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( 0, -2 )
-shape = SubResource( 1 )
-
-[node name="PlayerDisplay" parent="." index="1" instance=ExtResource( 3 )]
+[node name="PlayerDisplay" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 0, 4 )
 
-[node name="PlayerMovement" parent="." index="2" instance=ExtResource( 2 )]
+[node name="PlayerMovement" parent="." index="1" instance=ExtResource( 2 )]
 body_path = NodePath("..")
 
-[node name="PlayerCamera" parent="." index="3" instance=ExtResource( 6 )]
+[node name="PlayerCamera" parent="." index="2" instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -2 )
+shape = SubResource( 1 )
 
 [node name="HurtSprite" parent="." index="5"]
 position = Vector2( 0, -4 )

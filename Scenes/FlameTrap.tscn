@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Sprites/circle.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/FlameTrap.gd" type="Script" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=7]
 radius = 14.0522
 
 [sub_resource type="Gradient" id=2]
@@ -41,7 +41,7 @@ color_ramp = SubResource( 3 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="Particles2D" parent="." index="3"]
 scale = Vector2( 1.76611, 1.76611 )

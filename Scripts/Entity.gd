@@ -4,10 +4,11 @@ class_name Entity
 onready var hurt_anim = $"HurtAnimation"
 onready var hp_bar = $"HealthBarPivot/HealthBar"
 
-var max_hp:float = 4.0
-var hp:float = 4.0
+export var max_hp:float = 4.0
+var hp:float = max_hp
 
 func _ready():
+	hp = max_hp
 	hp_bar.set_health(1)
 
 func death():
