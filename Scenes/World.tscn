@@ -524,14 +524,14 @@ position = Vector2( 1744, -128 )
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
-[node name="DeathScreen" parent="Overlay" instance=ExtResource( 6 )]
-modulate = Color( 1, 1, 1, 0 )
+[node name="PauseScreen" parent="Overlay" instance=ExtResource( 10 )]
+visible = false
 
 [node name="Thankyou" parent="Overlay" instance=ExtResource( 17 )]
 modulate = Color( 1, 1, 1, 0 )
 
-[node name="PauseScreen" parent="Overlay" instance=ExtResource( 10 )]
-visible = false
+[node name="DeathScreen" parent="Overlay" instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0 )
 
 [connection signal="give_player_weapon" from="EventPlayer" to="." method="_on_EventPlayer_give_player_weapon"]
 [connection signal="animation_finished" from="BossAnimation" to="BossAnimation" method="_on_BossAnimation_animation_finished"]

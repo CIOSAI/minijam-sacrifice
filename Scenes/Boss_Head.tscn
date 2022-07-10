@@ -44,7 +44,7 @@ tracks/2/keys = {
 
 [node name="Boss_Head" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-max_hp = 9.0
+max_hp = 99.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )

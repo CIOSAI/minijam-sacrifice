@@ -15,5 +15,7 @@ func pause():
 	get_tree().paused = true
 
 func _on_Boss_Head_boss_killed():
+	$"../Overlay/DeathScreen".queue_free()
+	$"../Overlay/Thankyou".mouse_filter = Control.MOUSE_FILTER_STOP
 	play("Ending")
 	Global.camera.screen_shake(3)

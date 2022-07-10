@@ -26,6 +26,7 @@ func player_death(p:Player):
 		{"type": current_death_type, "pos": p.global_position}
 	)
 	get_tree().paused = true
+	$"Overlay/DeathScreen".mouse_filter = Control.MOUSE_FILTER_STOP
 	anim.play(["healing", "poison", "power"][current_death_type])
 
 func spawn_wisp(type:int, pos:Vector2):

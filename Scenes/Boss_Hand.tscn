@@ -5,8 +5,9 @@
 [ext_resource path="res://Scripts/Boss_Hand.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Sprites/hand.png" type="Texture" id=4]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 30.9485
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 45.0388
+height = 453.822
 
 [node name="Boss_Hand" instance=ExtResource( 1 )]
 collision_mask = 0
