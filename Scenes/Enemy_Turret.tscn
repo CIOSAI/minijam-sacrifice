@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Sprites/circle.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 22.3238, 26.7899 )
+extents = Vector2( 7, 7.5 )
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 7.54412, 0, 0, Vector2( 0.166667, 1 ), -0.914027, -0.914027, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -71,6 +71,7 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 1, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Aim" type="Line2D" parent="." index="1"]
@@ -78,7 +79,6 @@ points = PoolVector2Array( 0, 0, 64, 0 )
 default_color = Color( 0.921569, 0.854902, 0.431373, 0 )
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
-scale = Vector2( 3.24749, 3.24749 )
 texture = ExtResource( 3 )
 hframes = 32
 vframes = 32

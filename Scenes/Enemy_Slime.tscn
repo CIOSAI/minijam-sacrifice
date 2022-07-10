@@ -7,14 +7,14 @@
 [ext_resource path="res://Scenes/Weapons/BatWeapon.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.6421, 13.768 )
+extents = Vector2( 5.74133, 4.74759 )
 
 [node name="Enemy_Slime" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 speed = 2.0
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( 0, -19.25 )
+position = Vector2( 0, -22.5 )
 scale = Vector2( 1.56758, 1.57975 )
 shape = SubResource( 1 )
 
@@ -26,7 +26,6 @@ walk_tilt = 1.0
 
 [node name="Sprite" type="Sprite" parent="Display" index="0"]
 position = Vector2( 0, -24 )
-scale = Vector2( 3.57153, 3.57153 )
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 32
@@ -35,9 +34,9 @@ frame = 832
 [node name="Tween" type="Tween" parent="Display" index="1"]
 
 [node name="BatWeapon" parent="." index="2" instance=ExtResource( 5 )]
-position = Vector2( 0, -18.25 )
+position = Vector2( 2.10321e-12, -22 )
 rotation = 3.14159
-scale = Vector2( 1.82671, 1.82671 )
+scale = Vector2( 0.724547, 0.70753 )
 
 [node name="Tween" type="Tween" parent="." index="3"]
 repeat = true
