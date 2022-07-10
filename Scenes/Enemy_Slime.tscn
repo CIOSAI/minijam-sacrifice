@@ -14,7 +14,7 @@ script = ExtResource( 4 )
 speed = 2.0
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( 0, -4 )
+position = Vector2( 0, 0.419418 )
 scale = Vector2( 1.56758, 1.57975 )
 shape = SubResource( 1 )
 
@@ -25,7 +25,6 @@ walk_wobble_amp = 0.454
 walk_tilt = 1.0
 
 [node name="Sprite" type="Sprite" parent="Display" index="0"]
-position = Vector2( 0, -4 )
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 32
@@ -34,7 +33,7 @@ frame = 832
 [node name="Tween" type="Tween" parent="Display" index="1"]
 
 [node name="BatWeapon" parent="." index="2" instance=ExtResource( 5 )]
-position = Vector2( 2.10321e-12, -4.51859 )
+position = Vector2( 2.10321e-12, 0.0776057 )
 rotation = 3.14159
 scale = Vector2( 0.724547, 0.70753 )
 
@@ -46,4 +45,4 @@ playback/repeat = true
 position = Vector2( 0, -4 )
 
 [node name="HealthBarPivot" parent="." index="6"]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -12 )

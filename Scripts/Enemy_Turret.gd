@@ -3,6 +3,8 @@ extends Enemy
 onready var bullet = preload("res://Scenes/Enemy_Bullet.tscn")
 onready var aim = $"Aim"
 onready var tw = $"Tween"
+onready var ray = $"RayCast2D"
+onready var anim = $"AnimationPlayer"
 
 var aim_dir:Vector2 = Vector2.LEFT
 
@@ -12,6 +14,11 @@ func get_dir():
 func _process(delta):
 	$"Sprite".flip_h = get_dir().x<0
 	aim.rotation = aim_dir.angle()
+	ray.rotation = aim_dir.angle()
+	if(ray.get_collider() is Player):
+		anim.play("default")
+	else:
+		anim.stop()
 
 func _physics_process(delta):
 	tw.interpolate_property(self, "aim_dir"

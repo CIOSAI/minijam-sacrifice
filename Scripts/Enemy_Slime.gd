@@ -1,6 +1,6 @@
 extends Enemy
 
-var init_pos:Vector2
+export var init_pos:Vector2
 export var target:Vector2
 export var speed = 1.0
 
@@ -14,10 +14,12 @@ func mtw(v:Vector2)->Vector2:
 	return Global.tm.map_to_world(v)
 
 func _ready():
-	init_pos = global_position
 	follow = init_pos
 	
+	init_pos *= Global.tm.cell_size.x
+	init_pos += Global.tm.cell_size/2.0
 	target *= Global.tm.cell_size.x
+	target += Global.tm.cell_size/2.0
 	target -= init_pos
 	speed *= Global.tm.cell_size.x
 	
