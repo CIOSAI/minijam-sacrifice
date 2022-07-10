@@ -1,28 +1,137 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemy_Turret.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/MainMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Enemy_Slime.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/DeathScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sprites/wisp_healing.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/wisp_poison.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/wisp_power.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/PauseScreen.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "healing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Overlay/DeathScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Overlay/DeathScreen")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 7 ), 0 ],
+"method": "_setup"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "poison"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Overlay/DeathScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Overlay/DeathScreen")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 8 ), 1 ],
+"method": "_setup"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "power"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Overlay/DeathScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Overlay/DeathScreen")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 9 ), 2 ],
+"method": "_setup"
+} ]
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="MainMap" parent="." instance=ExtResource( 4 )]
-position = Vector2( -33, -138 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 77.4156, 142.072 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/healing = SubResource( 1 )
+anims/poison = SubResource( 2 )
+anims/power = SubResource( 3 )
 
 [node name="Enemy_Turret" parent="." instance=ExtResource( 2 )]
-position = Vector2( 138.123, -200.914 )
+position = Vector2( 45.4156, 117.491 )
 
 [node name="Enemy_Turret2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 138.123, -268.324 )
+position = Vector2( 45.4156, 50.0794 )
 
 [node name="Enemy_Turret3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 212.123, -342.624 )
+position = Vector2( 120.416, 42.0794 )
 
 [node name="Enemy_Slime" parent="." instance=ExtResource( 5 )]
-position = Vector2( 104, 6 )
+position = Vector2( 297.208, 141.59 )
 target = Vector2( 3, 0 )
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="DeathScreen" parent="Overlay" instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="PauseScreen" parent="Overlay" instance=ExtResource( 10 )]
+visible = false
