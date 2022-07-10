@@ -32,6 +32,7 @@ scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
 [node name="PlayerDisplay" type="Sprite"]
+z_index = 5
 offset = Vector2( 0, -8 )
 script = ExtResource( 2 )
 walk_wobble_freq = 24.0
