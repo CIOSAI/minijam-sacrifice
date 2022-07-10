@@ -29,3 +29,6 @@ body_path = NodePath("..")
 
 [node name="PlayerCamera" parent="." index="4" instance=ExtResource( 6 )]
 zoom = Vector2( 1, 1 )
+
+[node name="HealthBarPivot" parent="." index="7"]
+position = Vector2( 0, -8 )

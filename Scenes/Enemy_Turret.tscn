@@ -101,4 +101,8 @@ autoplay = "default"
 anims/default = SubResource( 5 )
 
 [node name="HealthBarPivot" parent="." index="7"]
-position = Vector2( 0, -32 )
+position = Vector2( 0, -15.4822 )
+
+[node name="HealthBar" parent="HealthBarPivot" index="0"]
+margin_top = -15.0561
+margin_bottom = 16.9439

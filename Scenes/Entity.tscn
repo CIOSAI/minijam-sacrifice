@@ -44,16 +44,14 @@ anims/hurt = SubResource( 1 )
 [node name="HurtSprite" type="Sprite" parent="."]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.501961 )
-scale = Vector2( 1.4218, 1.4218 )
+scale = Vector2( 0.333545, 0.333545 )
 texture = ExtResource( 2 )
 hframes = 4
 frame = 3
 
 [node name="HealthBarPivot" type="Node2D" parent="."]
 position = Vector2( 0, -64 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.25, 0.25 )
 z_index = 10
 
 [node name="HealthBar" parent="HealthBarPivot" instance=ExtResource( 3 )]
-margin_left = -64.0
-margin_right = 64.0
