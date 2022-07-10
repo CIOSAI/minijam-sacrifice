@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemy_Turret.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/Sprites/wisp_poison.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Sprites/wisp_power.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/PauseScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/FlameTrap.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "healing"
@@ -127,6 +128,21 @@ position = Vector2( 120.416, 42.0794 )
 [node name="Enemy_Slime" parent="." instance=ExtResource( 5 )]
 position = Vector2( 297.208, 141.59 )
 target = Vector2( 3, 0 )
+
+[node name="FlameTrap" parent="." instance=ExtResource( 11 )]
+position = Vector2( 365, 194 )
+
+[node name="FlameTrap2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 396.113, 194 )
+
+[node name="FlameTrap3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 429.749, 194 )
+
+[node name="FlameTrap4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 462.544, 194 )
+
+[node name="FlameTrap5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 493.657, 194 )
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 

@@ -4,15 +4,15 @@
 [ext_resource path="res://Assets/Sprites/wisp_healing.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 144.617
+radius = 143.278
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.355649, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.02772, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=3]
-curve = SubResource( 4 )
+curve = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=4]
 emission_shape = 1
 emission_sphere_radius = 125.39
 flag_disable_z = true
@@ -36,7 +36,7 @@ autostart = true
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 24
 visibility_rect = Rect2( -200, -200, 400, 400 )
-process_material = SubResource( 5 )
+process_material = SubResource( 4 )
 texture = ExtResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_Wisp_body_entered"]
