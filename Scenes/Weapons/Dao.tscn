@@ -15,9 +15,9 @@ curve = SubResource( 1 )
 [sub_resource type="ParticlesMaterial" id=3]
 flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
-spread = 84.25
+spread = 66.66
 gravity = Vector3( 0, 98, 0 )
-initial_velocity = 97.74
+initial_velocity = 67.66
 initial_velocity_random = 1.0
 angular_velocity = 720.0
 angular_velocity_random = 0.47
@@ -25,11 +25,12 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 720.0
 angle_random = 1.0
+scale = 0.3
 scale_curve = SubResource( 2 )
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 25.5001
-height = 106.5
+radius = 9.70879
+height = 46.361
 
 [sub_resource type="Animation" id=5]
 length = 0.3
@@ -79,14 +80,14 @@ attribute = ExtResource( 3 )
 is_player = true
 
 [node name="Sprite" parent="Pivot" index="0"]
-position = Vector2( 64, 0 )
+position = Vector2( 24, 0 )
 rotation = -2.35619
-scale = Vector2( 11.8944, 11.8944 )
+scale = Vector2( 4.93439, 4.93439 )
 texture = ExtResource( 4 )
 
 [node name="CritParticle" type="Particles2D" parent="Pivot" index="1"]
-position = Vector2( 128, 0 )
-emitting = false
+position = Vector2( 48, 0 )
+amount = 12
 speed_scale = 1.5
 local_coords = false
 process_material = SubResource( 3 )
@@ -97,7 +98,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HurtArea" index="0"]
-position = Vector2( 64, 0 )
+position = Vector2( 32, 0 )
 rotation = -1.5708
 shape = SubResource( 4 )
 

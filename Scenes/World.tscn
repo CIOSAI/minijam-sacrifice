@@ -15,13 +15,13 @@ position = Vector2( -33, -138 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="Enemy_Turret" parent="." instance=ExtResource( 2 )]
-position = Vector2( 4488, 2197.71 )
+position = Vector2( 138.123, -200.914 )
 
 [node name="Enemy_Turret2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 4488, 2130.3 )
+position = Vector2( 138.123, -268.324 )
 
 [node name="Enemy_Turret3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 4562, 2056 )
+position = Vector2( 212.123, -342.624 )
 
 [node name="Enemy_Slime" parent="." instance=ExtResource( 5 )]
 position = Vector2( 104, 6 )

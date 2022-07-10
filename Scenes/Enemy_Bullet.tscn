@@ -9,7 +9,7 @@
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
-scale = Vector2( 6.31372, 6.31372 )
+scale = Vector2( 2.86928, 2.86928 )
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 32
@@ -19,7 +19,7 @@ frame = 329
 scale = Vector2( 0.175601, 0.175601 )
 
 [node name="BatWeapon" parent="." index="2" instance=ExtResource( 4 )]
-scale = Vector2( 1.29965, 1.29965 )
+scale = Vector2( 0.647249, 0.647249 )
 
 [node name="HealthBarPivot" parent="." index="5"]
 visible = false
