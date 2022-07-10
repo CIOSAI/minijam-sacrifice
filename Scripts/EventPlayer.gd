@@ -7,3 +7,6 @@ func give_player_weapon():
 
 func _on_DaoObtainedTrigger_body_entered(body):
 	play("WeaponObtained")
+
+func _on_BossFightTrigger_body_entered(body):
+	play("BossFightStart")

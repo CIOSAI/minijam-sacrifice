@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Weapons/Weapon_Boss_Hand.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Boss_Hand.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.9485
+
+[node name="Boss_Hand" instance=ExtResource( 1 )]
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="Weapon_Boss_Hand" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="HealthBarPivot" parent="." index="4"]
+position = Vector2( 0, -48 )
+
+[node name="Sprite" type="Sprite" parent="." index="5"]
+texture = ExtResource( 4 )
