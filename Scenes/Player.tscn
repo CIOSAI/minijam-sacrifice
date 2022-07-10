@@ -27,4 +27,5 @@ position = Vector2( 0, 15.5175 )
 body_path = NodePath("..")
 
 [node name="PlayerCamera" parent="." index="4" instance=ExtResource( 6 )]
+pause_mode = 2
 zoom = Vector2( 1, 1 )

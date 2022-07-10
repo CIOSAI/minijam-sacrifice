@@ -13,9 +13,4 @@ func _process(delta):
 	display.set_gravity(movement.gravity)
 
 func death():
-	var n = load("res://Scenes/Wisp_Power.tscn").instance()
-	n.global_position = global_position
-	get_parent().add_child(n)
-	
-	get_parent().respawn()
-	queue_free()
+	get_parent().player_death(self)
