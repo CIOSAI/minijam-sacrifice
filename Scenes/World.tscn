@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemy_Turret.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Assets/Sprites/wisp_power.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/PauseScreen.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/FlameTrap.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Weapons/Dao.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scripts/EventPlayer.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "healing"
@@ -102,6 +104,76 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "WeaponObtained"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("Dao")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("EventPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "give_player_weapon"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.25, 0.5 ],
+"method": "frame_freeze"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ Vector2( 288, 8 ), Vector2( 3, 3 ), 0.2 ],
+"method": "move_camera"
+}, {
+"args": [ 0.2 ],
+"method": "move_camera_back"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "intro"
+length = 0.7
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 32, 8 )
+
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -115,6 +187,13 @@ pause_mode = 2
 anims/healing = SubResource( 1 )
 anims/poison = SubResource( 2 )
 anims/power = SubResource( 3 )
+
+[node name="EventPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+autoplay = "intro"
+anims/WeaponObtained = SubResource( 6 )
+anims/intro = SubResource( 4 )
+script = ExtResource( 13 )
 
 [node name="Enemy_Turret" parent="." instance=ExtResource( 2 )]
 position = Vector2( -58.315, -118.842 )
@@ -144,6 +223,18 @@ position = Vector2( 160, 0 )
 [node name="FlameTrap5" parent="." instance=ExtResource( 11 )]
 position = Vector2( 192, 0 )
 
+[node name="Dao" parent="." instance=ExtResource( 12 )]
+position = Vector2( 264, 8 )
+is_player = false
+
+[node name="DaoObtainedTrigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DaoObtainedTrigger"]
+position = Vector2( 288, 8 )
+shape = SubResource( 5 )
+
 [node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="DeathScreen" parent="Overlay" instance=ExtResource( 6 )]
@@ -151,3 +242,6 @@ modulate = Color( 1, 1, 1, 0 )
 
 [node name="PauseScreen" parent="Overlay" instance=ExtResource( 10 )]
 visible = false
+
+[connection signal="give_player_weapon" from="EventPlayer" to="." method="_on_EventPlayer_give_player_weapon"]
+[connection signal="body_entered" from="DaoObtainedTrigger" to="EventPlayer" method="_on_DaoObtainedTrigger_body_entered"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/industrial.v2 (1).png" type="Texture" id=2]
 [ext_resource path="res://Scripts/SlimeDisplay.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Enemy_Slime.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Weapons/BatWeapon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Weapons/Slime_Attribute.tres" type="Resource" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.74133, 4.74759 )
@@ -21,7 +22,7 @@ shape = SubResource( 1 )
 [node name="Display" type="Sprite" parent="." index="1"]
 script = ExtResource( 3 )
 walk_wobble_freq = 12.0
-walk_wobble_amp = 0.454
+walk_wobble_amp = 0.6
 walk_tilt = 1.0
 
 [node name="Sprite" type="Sprite" parent="Display" index="0"]
@@ -36,6 +37,7 @@ frame = 832
 position = Vector2( 2.10321e-12, 0.0776057 )
 rotation = 3.14159
 scale = Vector2( 0.724547, 0.70753 )
+attribute = ExtResource( 6 )
 
 [node name="Tween" type="Tween" parent="." index="3"]
 repeat = true

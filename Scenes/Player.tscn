@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/PlayerMovement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/PlayerDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Weapons/Dao.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/PlayerCamera.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -15,20 +14,19 @@ collision_layer = 2
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( -0.5, 9.5 )
+position = Vector2( 0, -2 )
 shape = SubResource( 1 )
 
-[node name="Dao" parent="." index="1" instance=ExtResource( 5 )]
-position = Vector2( 4, 11 )
+[node name="PlayerDisplay" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 0, 4 )
 
-[node name="PlayerDisplay" parent="." index="2" instance=ExtResource( 3 )]
-position = Vector2( 0, 15.5175 )
-
-[node name="PlayerMovement" parent="." index="3" instance=ExtResource( 2 )]
+[node name="PlayerMovement" parent="." index="2" instance=ExtResource( 2 )]
 body_path = NodePath("..")
 
-[node name="PlayerCamera" parent="." index="4" instance=ExtResource( 6 )]
-zoom = Vector2( 1, 1 )
+[node name="PlayerCamera" parent="." index="3" instance=ExtResource( 6 )]
 
-[node name="HealthBarPivot" parent="." index="7"]
-position = Vector2( 0, -8 )
+[node name="HurtSprite" parent="." index="5"]
+position = Vector2( 0, -4 )
+
+[node name="HealthBarPivot" parent="." index="6"]
+position = Vector2( 0, -16 )

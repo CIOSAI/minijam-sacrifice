@@ -4,23 +4,23 @@
 [ext_resource path="res://Assets/Sprites/circle.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/FlameTrap.gd" type="Script" id=3]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=1]
 radius = 14.0522
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.107143, 0.616071, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.945098, 0.764706, 0.501961, 1, 0.721569, 0, 0.0117647, 1, 0, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.138075, 1 ), -0.519883, -0.519883, 0, 0, Vector2( 1, 0 ), -2.03693, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=6]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, -12, 0 )
@@ -34,19 +34,19 @@ damping = 4.0
 damping_random = 1.0
 scale = 0.75
 scale_random = 1.0
-scale_curve = SubResource( 3 )
-color_ramp = SubResource( 5 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
 [node name="FlameTrap" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="Particles2D" parent="." index="3"]
 scale = Vector2( 1.76611, 1.76611 )
 z_index = -20
 lifetime = 2.0
 speed_scale = 3.0
-process_material = SubResource( 1 )
+process_material = SubResource( 6 )
 texture = ExtResource( 2 )
