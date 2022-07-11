@@ -57,12 +57,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Minijam-sacrifice"
-run/main_scene="res://Scenes/World.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+MusicPlayer="*res://Scenes/MusicPlayer.tscn"
+FX="*res://Scenes/AudioFX.tscn"
 
 [display]
 

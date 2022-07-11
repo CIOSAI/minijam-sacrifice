@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Entity
 
+onready var hit_sound = $"Hit"
 onready var hurt_anim = $"HurtAnimation"
 onready var hp_bar = $"HealthBarPivot/HealthBar"
 
@@ -30,6 +31,8 @@ func hurt(dmg:float, effects:Array=[]):
 		hp-=dmg
 		if dmg>0:
 			hurt_anim.play("hurt")
+			hit_sound.pitch_scale = rand_range(0.9, 1.1)
+			hit_sound.play()
 			Global.camera.screen_shake(dmg)
 		else:
 			hp = min(max_hp, hp)

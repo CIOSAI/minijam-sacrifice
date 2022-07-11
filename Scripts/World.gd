@@ -12,8 +12,17 @@ onready var anim = $"AnimationPlayer"
 var current_death_type = POISON
 
 func _ready():
+	Global.world = self
+	
 	for i in Global.all_wisp:
 		spawn_wisp(i["type"], i["pos"])
+	
+	if Global.death_count > 0:
+		$"Wisp".visible = true
+		$"Poison".visible = true
+		$"Weapon".visible = true
+	if Global.death_count > 1:
+		$"WispTypes".visible = true
 
 func _input(event):
 	if event.is_action_pressed("Retry"):
@@ -28,6 +37,10 @@ func player_death(p:Player):
 	get_tree().paused = true
 	$"Overlay/DeathScreen".mouse_filter = Control.MOUSE_FILTER_STOP
 	anim.play(["healing", "poison", "power"][current_death_type])
+	
+	$"Death".play()
+	
+	Global.death_count += 1
 
 func spawn_wisp(type:int, pos:Vector2):
 	var n = wisps[type].instance()

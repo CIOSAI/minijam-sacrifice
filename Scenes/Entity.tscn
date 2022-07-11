@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Entity.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/explosion.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/HealthBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Audio/8bit_gunloop_explosion.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hurt"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("HurtSprite:visible")
+tracks/0/path = NodePath("../Enemy_Slime/HurtSprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,7 +21,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HurtSprite:frame")
+tracks/1/path = NodePath("../Enemy_Slime/HurtSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -55,3 +56,6 @@ scale = Vector2( 0.25, 0.25 )
 z_index = 10
 
 [node name="HealthBar" parent="HealthBarPivot" instance=ExtResource( 3 )]
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )

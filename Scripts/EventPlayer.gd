@@ -9,6 +9,8 @@ func _on_DaoObtainedTrigger_body_entered(body):
 	play("WeaponObtained")
 
 func _on_BossFightTrigger_body_entered(body):
+	MusicPlayer.boss()
+	
 	play("BossFightStart")
 
 func pause():

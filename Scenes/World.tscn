@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemy_Turret.tscn" type="PackedScene" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://Scenes/Boss_Head.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scripts/BossAnimation.gd" type="Script" id=16]
 [ext_resource path="res://Scenes/Thanks.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Sign.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Assets/Audio/vgdeathsound.wav" type="AudioStream" id=19]
+[ext_resource path="res://Assets/Audio/chest_collect.wav" type="AudioStream" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "healing"
@@ -270,10 +273,36 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("Celebrate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "intro"
 length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wisp:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "Flame"
@@ -374,7 +403,6 @@ anims/power = SubResource( 3 )
 
 [node name="EventPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-autoplay = "intro"
 anims/BossFightStart = SubResource( 8 )
 anims/Ending = SubResource( 16 )
 anims/WeaponObtained = SubResource( 6 )
@@ -470,6 +498,9 @@ position = Vector2( 160, -32 )
 [node name="FlameTrap10" parent="." instance=ExtResource( 11 )]
 position = Vector2( 192, -32 )
 
+[node name="FlameTrap11" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1344, -208 )
+
 [node name="Enemy_Slime3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2008, -168 )
 init_pos = Vector2( 125, -11 )
@@ -522,16 +553,81 @@ position = Vector2( 1840, -128 )
 [node name="FlameTrap14" parent="FlameRack" instance=ExtResource( 11 )]
 position = Vector2( 1744, -128 )
 
-[node name="Overlay" type="CanvasLayer" parent="."]
+[node name="Movement" parent="." instance=ExtResource( 18 )]
+margin_left = -208.0
+margin_top = -112.0
+margin_right = -136.0
+margin_bottom = -40.0
+text = "move with
+ w
+asd"
 
-[node name="PauseScreen" parent="Overlay" instance=ExtResource( 10 )]
+[node name="Wisp" parent="." instance=ExtResource( 18 )]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -56.0
+margin_top = -56.0
+margin_right = 16.0
+margin_bottom = 16.0
+text = "Getting killed spawns helper wisps"
+
+[node name="Poison" parent="." instance=ExtResource( 18 )]
+visible = false
+margin_left = 80.0
+margin_top = -168.0
+margin_right = 152.0
+margin_bottom = -96.0
+text = "Poison wisp can damage enemy"
+
+[node name="Weapon" parent="." instance=ExtResource( 18 )]
+visible = false
+margin_left = 256.0
+margin_top = -128.0
+margin_right = 328.0
+margin_bottom = -32.0
+text = "Here's your comically large sword
+M1/left click to swing"
+
+[node name="WispTypes" parent="." instance=ExtResource( 18 )]
+visible = false
+margin_left = 352.0
+margin_top = -160.0
+margin_right = 432.0
+margin_bottom = 16.0
+text = "Retry while keeping wisps by press 'R', this also spawns a wisp of power"
+
+[node name="Boss" parent="." instance=ExtResource( 18 )]
+margin_left = 1584.0
+margin_top = -144.0
+margin_right = 1696.0
+margin_bottom = -32.0
+text = "Defeat the boss with the power of your helpers"
+
+[node name="Heal" parent="." instance=ExtResource( 18 )]
+margin_left = 1304.0
+margin_top = -312.0
+margin_right = 1376.0
+margin_bottom = -240.0
+text = "Fire spawns wisp of healing"
+
+[node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="Thankyou" parent="Overlay" instance=ExtResource( 17 )]
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="DeathScreen" parent="Overlay" instance=ExtResource( 6 )]
 modulate = Color( 1, 1, 1, 0 )
+
+[node name="PauseScreen" parent="Overlay" instance=ExtResource( 10 )]
+visible = false
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 19 )
+
+[node name="Celebrate" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 20 )
 
 [connection signal="give_player_weapon" from="EventPlayer" to="." method="_on_EventPlayer_give_player_weapon"]
 [connection signal="animation_finished" from="BossAnimation" to="BossAnimation" method="_on_BossAnimation_animation_finished"]
@@ -555,6 +651,8 @@ modulate = Color( 1, 1, 1, 0 )
 [connection signal="body_exited" from="FlameTrap9" to="FlameTrap9" method="_on_Wisp_body_exited"]
 [connection signal="body_entered" from="FlameTrap10" to="FlameTrap10" method="_on_Wisp_body_entered"]
 [connection signal="body_exited" from="FlameTrap10" to="FlameTrap10" method="_on_Wisp_body_exited"]
+[connection signal="body_entered" from="FlameTrap11" to="FlameTrap11" method="_on_Wisp_body_entered"]
+[connection signal="body_exited" from="FlameTrap11" to="FlameTrap11" method="_on_Wisp_body_exited"]
 [connection signal="body_entered" from="DaoObtainedTrigger" to="EventPlayer" method="_on_DaoObtainedTrigger_body_entered"]
 [connection signal="body_entered" from="BossFightTrigger" to="EventPlayer" method="_on_BossFightTrigger_body_entered"]
 [connection signal="boss_killed" from="Boss_Head" to="EventPlayer" method="_on_Boss_Head_boss_killed"]

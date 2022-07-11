@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Weapons/Dao.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Assets/Sprites/sword_sprite.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sprites/prog_outline.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/circle.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Audio/sword_start.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Audio/mace_end.wav" type="AudioStream" id=8]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 12.2649, 0, 0, Vector2( 0.179916, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -97,6 +99,20 @@ tracks/2/keys = {
 "method": "roll_crit"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("Swing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [node name="Dao" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -139,5 +155,12 @@ shape = SubResource( 9 )
 [node name="AnimationPlayer" parent="." index="1"]
 playback_speed = 0.75
 anims/base_attack = SubResource( 10 )
+
+[node name="Swing" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 7 )
+
+[node name="Crit" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 8 )
+volume_db = -6.0
 
 [connection signal="crit" from="." to="." method="_on_Dao_crit"]
